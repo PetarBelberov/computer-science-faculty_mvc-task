@@ -17,6 +17,43 @@ class StudentController
         require_once "../views/student.php";
     }
 
+    function addStudent() {
+        $name = $_POST['name'];
+        $roll_number = $_POST['roll_number'];
+        $dob = "";
+        if ($_POST["dob"]) {
+            $dob_timestamp = strtotime($_POST["dob"]);
+            $dob = date("Y-m-d", $dob_timestamp);
+        }
+        $class = $_POST['class'];
+        
+        $insertId = $this->student->addStudent($name, $roll_number, $dob, $class);
+        if (empty($insertId)) {
+            $response = array(
+                "message" => "Problem in Adding New Record",
+                "type" => "error"
+            );
+        } else {
+            header("Location: index.php");
+        }
+    }
+    
+    function editStudent() {
+        $student_id = $_GET["id"];
+        $name = $_POST['name'];
+        $roll_number = $_POST['roll_number'];
+        $dob = "";
+        if ($_POST["dob"]) {
+            $dob_timestamp = strtotime($_POST["dob"]);
+            $dob = date("Y-m-d", $dob_timestamp);
+        }
+        $class = $_POST['class'];
+        
+       $this->student->editStudent($name, $roll_number, $dob, $class, $student_id);
+        
+        header("Location: index.php");
+    }
+
     function getAllStudents() {
         $student = new Student();
         $student->getAllStudents();
