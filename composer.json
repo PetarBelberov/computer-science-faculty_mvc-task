@@ -1,0 +1,15 @@
+{
+    "name": "sap/computer-science-faculty_mvc-task",
+    "autoload": {
+        "psr-4": {
+            "Sap\\ComputerScienceFacultyMvcTask\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "PetarBelberov",
+            "email": "petar_belberov@gmx.com"
+        }
+    ],
+    "require": {}
+}
