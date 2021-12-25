@@ -1,4 +1,5 @@
 <?php
+namespace Sap\ComputerScienceFacultyMvcTask\Models;
 
 class Database {
     private $host = "localhost";
@@ -7,7 +8,7 @@ class Database {
     private $database = "cs_faculty";
 
     function __construct() {
-        $this->connectect = $this->connectDB();
+        $this->connect = $this->connectDB();
     }   
     
     function connectDB() {
@@ -16,13 +17,13 @@ class Database {
     }
     
     function runBaseQuery($query) {
-        $result = $this->connectect->query($query);   
+        $result = $this->connect->query($query);   
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $resultSet[] = $row;
             }
+            return $resultSet;
         }
-        return $resultSet;
     }
 
     function runQuery($query, $param_type, $param_value_array) {

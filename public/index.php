@@ -1,5 +1,6 @@
 <?php
 
+use Sap\ComputerScienceFacultyMvcTask\Controllers\StudentController;
 
 require dirname(__DIR__).'./vendor/autoload.php';
 

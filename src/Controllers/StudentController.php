@@ -1,4 +1,7 @@
 <?php 
+namespace Sap\ComputerScienceFacultyMvcTask\Controllers;
+
+use Sap\ComputerScienceFacultyMvcTask\Models\Student;
 
 class StudentController
 {
@@ -14,7 +17,8 @@ class StudentController
         $result = $student->getAllStudents();
         
         require_once "../views/header.php";
-        require_once "../views/student.php";
+        require_once "../views/index.php";
+        require_once "../views/footer.php";
     }
 
     function addStudent() {
@@ -58,7 +62,8 @@ class StudentController
         $student = new Student();
         $student->getAllStudents();
         require_once "../views/header.php";
-        require_once "../views/student.php";
+        require_once "../views/index.php";
+        require_once "../views/footer.php";
     }
 }
 ?>

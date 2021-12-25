@@ -1,4 +1,8 @@
 <?php
+namespace Sap\ComputerScienceFacultyMvcTask\Models;
+
+use Sap\ComputerScienceFacultyMvcTask\Models\Database;
+
 class Student {
     
     private $db_handle;
@@ -7,28 +11,24 @@ class Student {
         $this->db_handle = new Database();
     }
 
-    function addStudent($name, $roll_number, $dob, $class) {
-        $query = "INSERT INTO tbl_student (name,roll_number,dob,class) VALUES (?, ?, ?, ?)";
+    function addStudent($name, $course) {
+        $query = "INSERT INTO student (name,course) VALUES (?, ?)";
         $paramType = "siss";
         $paramValue = array(
             $name,
-            $roll_number,
-            $dob,
-            $class
+            $course
         );
         
         $insertId = $this->db_handle->insert($query, $paramType, $paramValue);
         return $insertId;
     }
     
-    function editStudent($name, $roll_number, $dob, $class, $student_id) {
-        $query = "UPDATE tbl_student SET name = ?,roll_number = ?,dob = ?,class = ? WHERE id = ?";
+    function editStudent($name, $course, $student_id) {
+        $query = "UPDATE student SET name = ?,course = ? WHERE id = ?";
         $paramType = "sissi";
         $paramValue = array(
             $name,
-            $roll_number,
-            $dob,
-            $class,
+            $course,
             $student_id
         );
         
@@ -36,7 +36,7 @@ class Student {
     }
     
     function deleteStudent($student_id) {
-        $query = "DELETE FROM tbl_student WHERE id = ?";
+        $query = "DELETE FROM student WHERE id = ?";
         $paramType = "i";
         $paramValue = array(
             $student_id
@@ -45,7 +45,7 @@ class Student {
     }
     
     function getStudentById($student_id) {
-        $query = "SELECT * FROM tbl_student WHERE id = ?";
+        $query = "SELECT * FROM student WHERE id = ?";
         $paramType = "i";
         $paramValue = array(
             $student_id
@@ -56,7 +56,7 @@ class Student {
     }
 
     function getAllStudents() {
-        $sql = "SELECT * FROM tbl_student ORDER BY id";
+        $sql = "SELECT * FROM student ORDER BY id";
 
         $result = $this->db_handle->runBaseQuery($sql);
         return $result;
