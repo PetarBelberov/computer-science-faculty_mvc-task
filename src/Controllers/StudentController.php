@@ -1,7 +1,4 @@
 <?php 
-// namespace Jd\Sap\Controllers;
-
-// use Jd\Sap\Models\Student;
 
 class StudentController
 {
@@ -10,7 +7,21 @@ class StudentController
     }
     
     public function index() {
+        if (! empty($_GET["action"])) {
+            $action = $_GET["action"];
+        }
+        $student = new Student();
+        $result = $student->getAllStudents();
         
+        require_once "../views/header.php";
+        require_once "../views/student.php";
+    }
+
+    function getAllStudents() {
+        $student = new Student();
+        $student->getAllStudents();
+        require_once "../views/header.php";
+        require_once "../views/student.php";
     }
 }
 ?>
