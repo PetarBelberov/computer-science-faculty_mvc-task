@@ -1,6 +1,8 @@
 <?php
+
 namespace Sap\ComputerScienceFacultyMvcTask\Models;
 
+use ArgumentCountError;
 use Sap\ComputerScienceFacultyMvcTask\Models\Database;
 
 class Student {
@@ -13,10 +15,10 @@ class Student {
 
     function addStudent($name, $course) {
         $query = "INSERT INTO student (name,course) VALUES (?, ?)";
-        $paramType = "siss";
+        $paramType = "ss";
         $paramValue = array(
             $name,
-            $course
+            $course,
         );
         
         $insertId = $this->db_handle->insert($query, $paramType, $paramValue);
@@ -25,7 +27,7 @@ class Student {
     
     function editStudent($name, $course, $student_id) {
         $query = "UPDATE student SET name = ?,course = ? WHERE id = ?";
-        $paramType = "sissi";
+        $paramType = "sss";
         $paramValue = array(
             $name,
             $course,

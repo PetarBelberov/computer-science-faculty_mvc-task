@@ -19,19 +19,48 @@ class StudentController
         require_once "../views/header.php";
         require_once "../views/index.php";
         require_once "../views/footer.php";
+
+        if (isset($action)) {
+            switch ($action) {
+                
+                case "student-add":
+                    if (isset($_POST['add'])) {
+                        $this->addStudent();
+                    }
+                    require_once "../views/student-add.php";
+                    break;
+
+                case "student-edit":
+                    $student_id = $_GET["id"];
+                    
+                    if (isset($_POST['add'])) {
+                        $this->editStudent();
+                    }
+                    
+                    $result = $this->student->getStudentById($student_id);
+                    require_once "../views/student-edit.php";
+                    break;
+                
+                case "student-delete":
+                    $student_id = $_GET["id"];                    
+                    $this->student->deleteStudent($student_id);
+
+                    header("Location: index.php");
+                    $result = $this->student->getAllStudents();
+                    require_once "../views/index.php";
+                    break;
+                
+                default:
+                    break;
+            }
+        }
     }
 
-    function addStudent() {
+    public function addStudent() {
         $name = $_POST['name'];
-        $roll_number = $_POST['roll_number'];
-        $dob = "";
-        if ($_POST["dob"]) {
-            $dob_timestamp = strtotime($_POST["dob"]);
-            $dob = date("Y-m-d", $dob_timestamp);
-        }
-        $class = $_POST['class'];
+        $course = $_POST['course'];
         
-        $insertId = $this->student->addStudent($name, $roll_number, $dob, $class);
+        $insertId = $this->student->addStudent($name, $course);
         if (empty($insertId)) {
             $response = array(
                 "message" => "Problem in Adding New Record",
@@ -42,23 +71,17 @@ class StudentController
         }
     }
     
-    function editStudent() {
+    public function editStudent() {
         $student_id = $_GET["id"];
         $name = $_POST['name'];
-        $roll_number = $_POST['roll_number'];
-        $dob = "";
-        if ($_POST["dob"]) {
-            $dob_timestamp = strtotime($_POST["dob"]);
-            $dob = date("Y-m-d", $dob_timestamp);
-        }
-        $class = $_POST['class'];
+        $course = $_POST['course'];
         
-       $this->student->editStudent($name, $roll_number, $dob, $class, $student_id);
+       $this->student->editStudent($name, $course, $student_id);
         
         header("Location: index.php");
     }
 
-    function getAllStudents() {
+    public function getAllStudents() {
         $student = new Student();
         $student->getAllStudents();
         require_once "../views/header.php";
