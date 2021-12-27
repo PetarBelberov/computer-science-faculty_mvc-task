@@ -56,6 +56,15 @@ class Course {
         return $result;
     }
 
+    function getAllAcademics() {
+        $sql = "SELECT * FROM course
+            JOIN academic_course ON academic_course.course_id = course.id
+            JOIN academic ON academic.id=academic_course.academic_id";
+
+        $result = $this->db_handle->runBaseQuery($sql);
+        return $result;
+    }
+
     function getAllCourses() {
         $sql = "SELECT * FROM course ORDER BY id";
 

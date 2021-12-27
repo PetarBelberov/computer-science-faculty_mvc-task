@@ -15,8 +15,9 @@ class CourseController extends HomeController
             $action = $_GET["action"];
         }
         $course = new Course();
-        $result = $course->getAllCourses();
-        
+        $result_courses = $course->getAllCourses();
+        $result_academics = $course->getAllAcademics();
+
         require_once "../views/header.php";
         require_once "../views/courses_show.php";
         require_once "../views/footer.php";
@@ -86,6 +87,15 @@ class CourseController extends HomeController
         }
         
         header("Location: index.php");
+    }
+
+    public function getAllAcademics() {
+        $course = new Course();
+        $course->getAllAcademics();
+
+        require_once "../views/header.php";
+        require_once "../views/index.php";
+        require_once "../views/footer.php";
     }
 
     public function getAllCourses() {

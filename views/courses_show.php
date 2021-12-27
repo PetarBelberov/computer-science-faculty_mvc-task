@@ -8,16 +8,21 @@
             </thead>
             <tbody>
                 <?php
-                if (!empty($result)) :
-                    foreach ($result as $k => $v) : ?>
+                if (!empty($result_courses)) :
+                    foreach ($result_courses as $k => $v) : ?>
                         <tr>
-                            <td><?php echo $result[$k]["name"]; ?></td>
-                            <td><?php echo $result[$k]["credit"]; ?></td>
+                            <td><?php echo $result_courses[$k]["name"]; ?></td>
+                            <td><?php echo $result_courses[$k]["credit"]; ?></td>
                             <td>
-                                <a class="btnEditAction" href="index.php?action=course-edit&id=<?php echo $result[$k]["id"]; ?>">
+                                <?php if(isset($result_academics[$k]["name"])) : ?>
+                                    <?php echo $result_academics[$k]["name"]; ?>
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <a class="btnEditAction" href="index.php?action=course-edit&id=<?php echo $result_courses[$k]["id"]; ?>">
                                     <img src="image/icon-edit.png" />
                                 </a>
-                                <a class="btnDeleteAction" href="index.php?action=course-delete&id=<?php echo $result[$k]["id"]; ?>">
+                                <a class="btnDeleteAction" href="index.php?action=course-delete&id=<?php echo $result_courses[$k]["id"]; ?>">
                                     <img src="image/icon-delete.png" />
                                 </a>
                             </td>
@@ -27,6 +32,6 @@
             <tbody>
         </table>
         <div class="add-button">
-            <a id="btn_add_action" href="index.php?action=course-add"><img src="image/icon-add.png" />Add course</a>
+            <a id="btn_add_action" href="index.php?action=course-add"><img src="image/icon-add.png" />Add Course</a>
         </div>
     </div>
