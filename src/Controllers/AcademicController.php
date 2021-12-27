@@ -15,7 +15,7 @@ class AcademicController extends HomeController
             $action = $_GET["action"];
         }
         $academic = new Academic();
-        $resultAcademics = $academic->getAllAcademics();
+        $results = $academic->getAllAcademics();
 
         $options = array();
         array_push( $options, 'Assistant Professor');
@@ -43,7 +43,7 @@ class AcademicController extends HomeController
                     $this->editAcademic();
                 }
                 
-                $resultAcademic = $this->academic->getAcademicById($academic_id);
+                $result = $this->academic->getAcademicById($academic_id);
                 require_once "../views/academic_edit.php";
                 break;
             
@@ -52,7 +52,7 @@ class AcademicController extends HomeController
                 $this->academic->deleteAcademic($academic_id);
 
                 header("Location: index.php");
-                $resultAcademic = $this->academic->getAllAcademics();
+                $result = $this->academic->getAllAcademics();
                 require_once "../views/index.php";
                 break;
             
@@ -95,8 +95,8 @@ class AcademicController extends HomeController
     }
 
     public function getAllAcademics() {
-        $resultAcademic = new Academic();
-        $resultAcademic->getAllAcademics();
+        $result = new Academic();
+        $result->getAllAcademics();
         
         require_once "../views/header.php";
         require_once "../views/index.php";

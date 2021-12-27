@@ -6,7 +6,7 @@
         <label style="padding-top: 20px;">Name</label> <span
             id="name-info" class="info"></span><br /> <input type="text"
             name="nameAcademic" id="name_academic" class="rank_input"
-            value="<?php echo $resultAcademic[0]["name"]; ?>">
+            value="<?php echo $result[0]["name"]; ?>">
     </div>
     
     <div>

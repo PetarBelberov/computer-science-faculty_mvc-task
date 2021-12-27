@@ -3,7 +3,6 @@
         <thead>
             <tr>
                 <th><strong>Student Name</strong></th>
-                <th><strong>Course</strong></th>
             </tr>
         </thead>
         <tbody>
@@ -12,7 +11,6 @@
                 foreach ($result as $k => $v) : ?>
                     <tr>
                         <td><?php echo $result[$k]["name"]; ?></td>
-                        <td><?php echo $result[$k]["course"]; ?></td>
                         <td>
                             <a class="btnEditAction" href="index.php?action=student-edit&id=<?php echo $result[$k]["id"]; ?>">
                                 <img src="image/icon-edit.png" />

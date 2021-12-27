@@ -4,7 +4,7 @@ namespace Sap\ComputerScienceFacultyMvcTask\Models;
 
 use Sap\ComputerScienceFacultyMvcTask\Models\Database;
 
-class Student {
+class Course {
     
     private $db_handle;
     
@@ -12,50 +12,52 @@ class Student {
         $this->db_handle = new Database();
     }
 
-    function addStudent($name) {
-        $query = "INSERT INTO student (name) VALUES (?)";
-        $paramType = "s";
+    function addCourse($name, $credit) {
+        $query = "INSERT INTO course (name, credit) VALUES (?, ?)";
+        $paramType = "ss";
         $paramValue = array(
-            $name
+            $name,
+            $credit
         );
         
         $insertId = $this->db_handle->insert($query, $paramType, $paramValue);
         return $insertId;
     }
     
-    function editStudent($name, $student_id) {
-        $query = "UPDATE student SET name = ? WHERE id = ?";
-        $paramType = "ss";
+    function editCourse($name, $credit, $course_id) {
+        $query = "UPDATE student SET name = ?, credit = ? WHERE id = ?";
+        $paramType = "sss";
         $paramValue = array(
             $name,
-            $student_id
+            $credit,
+            $course_id
         );
         
         $this->db_handle->update($query, $paramType, $paramValue);
     }
     
-    function deleteStudent($student_id) {
-        $query = "DELETE FROM student WHERE id = ?";
+    function deleteCourse($course_id) {
+        $query = "DELETE FROM course WHERE id = ?";
         $paramType = "i";
         $paramValue = array(
-            $student_id
+            $course_id
         );
         $this->db_handle->update($query, $paramType, $paramValue);
     }
     
-    function getStudentById($student_id) {
-        $query = "SELECT * FROM student WHERE id = ?";
+    function getCourseById($course_id) {
+        $query = "SELECT * FROM course WHERE id = ?";
         $paramType = "i";
         $paramValue = array(
-            $student_id
+            $course_id
         );
         
         $result = $this->db_handle->runQuery($query, $paramType, $paramValue);
         return $result;
     }
 
-    function getAllStudents() {
-        $sql = "SELECT * FROM student ORDER BY id";
+    function getAllCourses() {
+        $sql = "SELECT * FROM course ORDER BY id";
 
         $result = $this->db_handle->runBaseQuery($sql);
         return $result;

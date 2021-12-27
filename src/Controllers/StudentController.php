@@ -59,11 +59,11 @@ class StudentController extends HomeController
 
     public function addStudent() {
         $name = trim(htmlspecialchars($_POST['name'], ENT_QUOTES));
-        $course = trim(htmlspecialchars($_POST['course'], ENT_QUOTES));
+        // $course = trim(htmlspecialchars($_POST['course'], ENT_QUOTES));
 
         // Validation
-        if (!empty($name && $course)) {
-            $insertId = $this->student->addStudent($name, $course);
+        if (!empty($name)) {
+            $insertId = $this->student->addStudent($name);
         }
         if (empty($insertId)) {
             $response = array(
@@ -78,11 +78,11 @@ class StudentController extends HomeController
     public function editStudent() {
         $student_id = trim(htmlspecialchars($_GET["id"], ENT_QUOTES));
         $name = trim(htmlspecialchars($_POST['name'], ENT_QUOTES));
-        $course = trim(htmlspecialchars($_POST['course'], ENT_QUOTES));
+        // $course = trim(htmlspecialchars($_POST['course'], ENT_QUOTES));
 
         // Validation
-        if (!empty($name && $course)) {
-            $this->student->editStudent($name, $course, $student_id);
+        if (!empty($name)) {
+            $this->student->editStudent($name, $student_id);
         }
         
         header("Location: index.php");
@@ -91,7 +91,7 @@ class StudentController extends HomeController
     public function getAllStudents() {
         $student = new Student();
         $student->getAllStudents();
-        
+
         require_once "../views/header.php";
         require_once "../views/index.php";
         require_once "../views/footer.php";

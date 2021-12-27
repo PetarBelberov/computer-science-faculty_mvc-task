@@ -10,11 +10,6 @@
     </div>
     
     <div>
-        <label>Course</label> <span id="course-info" class="course"></span><br />
-        <input type="text" name="course" id="course" class="course_input"
-            value="<?php echo $result[0]["course"]; ?>">
-    </div>
-    <div>
         <input type="submit" name="add" class="btn-submit" value="Save" />
     </div>
     </div>

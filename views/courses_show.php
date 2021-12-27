@@ -3,21 +3,21 @@
             <thead>
                 <tr>
                     <th><strong>Name</strong></th>
-                    <th><strong>Rank</strong></th>
+                    <th><strong>Credit</strong></th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                if (!empty($results)) :
-                    foreach ($results as $k => $v) : ?>
+                if (!empty($result)) :
+                    foreach ($result as $k => $v) : ?>
                         <tr>
-                            <td><?php echo $results[$k]["name"]; ?></td>
-                            <td><?php echo $results[$k]["rank"]; ?></td>
+                            <td><?php echo $result[$k]["name"]; ?></td>
+                            <td><?php echo $result[$k]["credit"]; ?></td>
                             <td>
-                                <a class="btnEditAction" href="index.php?action=academic-edit&id=<?php echo $results[$k]["id"]; ?>">
+                                <a class="btnEditAction" href="index.php?action=course-edit&id=<?php echo $result[$k]["id"]; ?>">
                                     <img src="image/icon-edit.png" />
                                 </a>
-                                <a class="btnDeleteAction" href="index.php?action=academic-delete&id=<?php echo $results[$k]["id"]; ?>">
+                                <a class="btnDeleteAction" href="index.php?action=course-delete&id=<?php echo $result[$k]["id"]; ?>">
                                     <img src="image/icon-delete.png" />
                                 </a>
                             </td>
@@ -27,6 +27,6 @@
             <tbody>
         </table>
         <div class="add-button">
-            <a id="btn_add_action" href="index.php?action=academic-add"><img src="image/icon-add.png" />Add Academic</a>
+            <a id="btn_add_action" href="index.php?action=course-add"><img src="image/icon-add.png" />Add course</a>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <?php
 
 use Sap\ComputerScienceFacultyMvcTask\Controllers\AcademicController;
-use Sap\ComputerScienceFacultyMvcTask\Controllers\HomeController;
+use Sap\ComputerScienceFacultyMvcTask\Controllers\CourseController;
 use Sap\ComputerScienceFacultyMvcTask\Controllers\StudentController;
 
 require dirname(__DIR__).'./vendor/autoload.php';
@@ -23,5 +23,8 @@ $student->index();
 
 $academic = new AcademicController();
 $academic->index();
+
+$course = new CourseController();
+$course->index();
 
 
