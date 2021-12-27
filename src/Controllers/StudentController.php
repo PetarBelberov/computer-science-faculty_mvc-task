@@ -60,8 +60,11 @@ class StudentController extends HomeController
     public function addStudent() {
         $name = $_POST['name'];
         $course = $_POST['course'];
-        
-        $insertId = $this->student->addStudent($name, $course);
+
+        // Validation
+        if (!empty($name && $course)) {
+            $insertId = $this->student->addStudent($name, $course);
+        }
         if (empty($insertId)) {
             $response = array(
                 "message" => "Problem in Adding New Record",
@@ -76,8 +79,11 @@ class StudentController extends HomeController
         $student_id = $_GET["id"];
         $name = $_POST['name'];
         $course = $_POST['course'];
-        
-       $this->student->editStudent($name, $course, $student_id);
+
+        // Validation
+        if (!empty($name && $course)) {
+            $this->student->editStudent($name, $course, $student_id);
+        }
         
         header("Location: index.php");
     }

@@ -7,7 +7,12 @@
     </div>
     <div>
         <label>Rank</label> <span id="rank-info" class="rank"></span><br />
-        <input type="text" name="rankAcademic" id="rank_academic" class="rank_input">
+        <select name="rankAcademic" id="rank_academic" class="rank_input">
+            <option value="" selected>Select...</option>
+            <?php foreach ($options as $option) : ?>
+                    <option value="<?php echo $option; ?>" ><?php echo $option; ?></option>
+            <?php endforeach; ?>
+        </select>
     </div>
     <div>
         <input type="submit" name="addAcademic" class="btn-submit" value="Add" />

@@ -17,6 +17,12 @@ class AcademicController extends HomeController
         $academic = new Academic();
         $resultAcademics = $academic->getAllAcademics();
 
+        $options = array();
+        array_push( $options, 'Assistant Professor');
+        array_push( $options, 'Senior Assistant Professor');
+        array_push( $options, 'Docent');
+        array_push( $options, 'Professor');
+
         require_once "../views/header.php";
         require_once "../views/academics_show.php";
         require_once "../views/footer.php";
@@ -60,7 +66,10 @@ class AcademicController extends HomeController
         $name = $_POST['nameAcademic'];
         $rank = $_POST['rankAcademic'];
         
-        $insertId = $this->academic->addAcademic($name, $rank);
+        // Validation
+        if (!empty($name && $rank)) {
+            $insertId = $this->academic->addAcademic($name, $rank);
+        }
         
         if (empty($insertId)) {
             $response = array(
@@ -77,7 +86,10 @@ class AcademicController extends HomeController
         $name = $_POST['nameAcademic'];
         $rank = $_POST['rankAcademic'];
         
-       $this->academic->editAcademic($name, $rank, $academic_id);
+        // Validation
+        if (!empty($name && $rank)) {
+            $this->academic->editAcademic($name, $rank, $academic_id);
+        }
         
         header("Location: index.php");
     }
