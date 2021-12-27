@@ -3,10 +3,11 @@ namespace Sap\ComputerScienceFacultyMvcTask\Controllers;
 
 use Sap\ComputerScienceFacultyMvcTask\Models\Student;
 
-class StudentController
+ob_start();
+class StudentController extends HomeController
 {
     function __construct() {
-        $this->student = new Student();
+        parent::__construct();
     }
     
     public function index() {
@@ -27,7 +28,7 @@ class StudentController
                     if (isset($_POST['add'])) {
                         $this->addStudent();
                     }
-                    require_once "../views/student-add.php";
+                    require_once "../views/student_add.php";
                     break;
 
                 case "student-edit":
@@ -38,7 +39,7 @@ class StudentController
                     }
                     
                     $result = $this->student->getStudentById($student_id);
-                    require_once "../views/student-edit.php";
+                    require_once "../views/student_edit.php";
                     break;
                 
                 case "student-delete":
@@ -49,7 +50,7 @@ class StudentController
                     $result = $this->student->getAllStudents();
                     require_once "../views/index.php";
                     break;
-                
+
                 default:
                     break;
             }

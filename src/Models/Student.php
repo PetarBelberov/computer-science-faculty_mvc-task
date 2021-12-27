@@ -2,7 +2,6 @@
 
 namespace Sap\ComputerScienceFacultyMvcTask\Models;
 
-use ArgumentCountError;
 use Sap\ComputerScienceFacultyMvcTask\Models\Database;
 
 class Student {

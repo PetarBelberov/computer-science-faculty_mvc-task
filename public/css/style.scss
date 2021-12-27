@@ -18,7 +18,7 @@ body {
         }
     }
     
-    #container_grid {
+    .container-grid {
         margin-bottom: 30px;
         & table {
             width: 100%;
@@ -35,6 +35,10 @@ body {
         
         & .btnDeleteAction {
             cursor: pointer;
+        }
+        .add-button {
+            text-align: right;
+            margin: 20px 0 10px;
         }
     }
     

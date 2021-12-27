@@ -1,5 +1,7 @@
 <?php
 
+use Sap\ComputerScienceFacultyMvcTask\Controllers\AcademicController;
+use Sap\ComputerScienceFacultyMvcTask\Controllers\HomeController;
 use Sap\ComputerScienceFacultyMvcTask\Controllers\StudentController;
 
 require dirname(__DIR__).'./vendor/autoload.php';
@@ -18,3 +20,8 @@ function baseURL(){
 
 $student = new StudentController();
 $student->index();
+
+$academic = new AcademicController();
+$academic->index();
+
+
