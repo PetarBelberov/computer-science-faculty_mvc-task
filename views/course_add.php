@@ -10,6 +10,10 @@
         <input type="text" name="creditCourse" id="credit_course" class="credit_input">
     </div>
     <div>
+        <label>Academic</label> <span id="credit-info" class="credit"></span><br />
+        <input type="text" name="creditCourse" id="credit_course" class="credit_input">
+    </div>
+    <div>
         <input type="submit" name="addCourse" class="btn-submit" value="Add" />
     </div>
     </div>

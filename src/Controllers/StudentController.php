@@ -14,12 +14,7 @@ class StudentController extends HomeController
         if (! empty($_GET["action"])) {
             $action = $_GET["action"];
         }
-        $student = new Student();
-        $result = $student->getAllStudents();
-        
-        require_once "../views/header.php";
-        require_once "../views/index.php";
-        require_once "../views/footer.php";
+        $this->getAllStudents();
 
         if (isset($action)) {
             switch ($action) {
@@ -57,6 +52,16 @@ class StudentController extends HomeController
         }
     }
 
+    public function getAllStudents() {
+        $student = new Student();
+        $result = $student->getAllStudents();
+        
+        require_once "../views/header.php";
+        require_once "../views/index.php";
+        require_once "../views/footer.php";
+
+    }
+
     public function addStudent() {
         $name = trim(htmlspecialchars($_POST['name'], ENT_QUOTES));
         // $course = trim(htmlspecialchars($_POST['course'], ENT_QUOTES));
@@ -86,15 +91,6 @@ class StudentController extends HomeController
         }
         
         header("Location: index.php");
-    }
-
-    public function getAllStudents() {
-        $student = new Student();
-        $student->getAllStudents();
-
-        require_once "../views/header.php";
-        require_once "../views/index.php";
-        require_once "../views/footer.php";
     }
 }
 ?>

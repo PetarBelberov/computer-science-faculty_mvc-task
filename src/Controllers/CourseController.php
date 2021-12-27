@@ -14,13 +14,7 @@ class CourseController extends HomeController
         if (! empty($_GET["action"])) {
             $action = $_GET["action"];
         }
-        $course = new Course();
-        $result_courses = $course->getAllCourses();
-        $result_academics = $course->getAllAcademics();
-
-        require_once "../views/header.php";
-        require_once "../views/courses_show.php";
-        require_once "../views/footer.php";
+        $this->getAllCourses();
 
         if (isset($action)) {
             switch ($action) {
@@ -58,6 +52,16 @@ class CourseController extends HomeController
         }
     }
 
+    public function getAllCourses() {
+        $course = new Course();
+        $result_courses = $course->getAllCourses();
+        $result_academics = $course->getAllCoursesAcademics();
+
+        require_once "../views/header.php";
+        require_once "../views/courses_show.php";
+        require_once "../views/footer.php";
+    }
+
     public function addCourse() {
         $name = trim(htmlspecialchars($_POST['nameCourse'], ENT_QUOTES));
         $credit = trim(htmlspecialchars($_POST['creditCourse'], ENT_QUOTES));
@@ -78,33 +82,15 @@ class CourseController extends HomeController
     
     public function editCourse() {
         $course_id = trim(htmlspecialchars($_GET["id"], ENT_QUOTES));
-        $name = trim(htmlspecialchars($_POST['name'], ENT_QUOTES));
-        $credit = trim(htmlspecialchars($_POST['credit'], ENT_QUOTES));
-
+        $name = trim(htmlspecialchars($_POST['nameCourse'], ENT_QUOTES));
+        $credit = trim(htmlspecialchars($_POST['creditCourse'], ENT_QUOTES));
+        
         // Validation
         if (!empty($name) && !empty($credit)) {
-            $this->course->editCourse($name, $course_id);
+            $this->course->editCourse($name, $credit, $course_id);
         }
         
         header("Location: index.php");
-    }
-
-    public function getAllAcademics() {
-        $course = new Course();
-        $course->getAllAcademics();
-
-        require_once "../views/header.php";
-        require_once "../views/index.php";
-        require_once "../views/footer.php";
-    }
-
-    public function getAllCourses() {
-        $course = new Course();
-        $course->getAllCourses();
-
-        require_once "../views/header.php";
-        require_once "../views/index.php";
-        require_once "../views/footer.php";
     }
 }
 ?>

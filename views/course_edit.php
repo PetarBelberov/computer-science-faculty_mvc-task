@@ -3,11 +3,11 @@
     <div id="mail-status"></div>
     <div>
         <label style="padding-top: 20px;">Name</label> <span id="name-info" class="info"></span><br />
-        <input type="text" name="nameCourse" id="name_course" class="credit_input" value="<?php echo $result[0]["name"]; ?>">>
+        <input type="text" name="nameCourse" id="name_course" class="credit_input" value="<?php echo $result[0]["name"]; ?>">
     </div>
     <div>
         <label>Credit</label> <span id="credit-info" class="credit"></span><br />
-        <input type="text" name="creditCourse" id="credit_course" class="credit_input" value="<?php echo $result[0]["credit"]; ?>">>
+        <input type="text" name="creditCourse" id="credit_course" class="credit_input" value="<?php echo $result[0]["credit"]; ?>">
     </div>
     <div>
         <input type="submit" name="addCourse" class="btn-submit" value="Add" />

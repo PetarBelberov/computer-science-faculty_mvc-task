@@ -25,7 +25,7 @@ class Course {
     }
     
     function editCourse($name, $credit, $course_id) {
-        $query = "UPDATE student SET name = ?, credit = ? WHERE id = ?";
+        $query = "UPDATE course SET name = ?, credit = ? WHERE id = ?";
         $paramType = "sss";
         $paramValue = array(
             $name,
@@ -56,7 +56,7 @@ class Course {
         return $result;
     }
 
-    function getAllAcademics() {
+    function getAllCoursesAcademics() {
         $sql = "SELECT * FROM course
             JOIN academic_course ON academic_course.course_id = course.id
             JOIN academic ON academic.id=academic_course.academic_id";

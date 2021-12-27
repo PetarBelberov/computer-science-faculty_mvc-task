@@ -14,18 +14,13 @@ class AcademicController extends HomeController
         if (! empty($_GET["action"])) {
             $action = $_GET["action"];
         }
-        $academic = new Academic();
-        $results = $academic->getAllAcademics();
-
         $options = array();
         array_push( $options, 'Assistant Professor');
         array_push( $options, 'Senior Assistant Professor');
         array_push( $options, 'Docent');
         array_push( $options, 'Professor');
 
-        require_once "../views/header.php";
-        require_once "../views/academics_show.php";
-        require_once "../views/footer.php";
+        $this->getAllAcademics();
 
         if (isset($action)) {
             switch ($action) {
@@ -43,7 +38,7 @@ class AcademicController extends HomeController
                     $this->editAcademic();
                 }
                 
-                $result = $this->academic->getAcademicById($academic_id);
+                $resultAcademic = $this->academic->getAcademicById($academic_id);
                 require_once "../views/academic_edit.php";
                 break;
             
@@ -52,7 +47,7 @@ class AcademicController extends HomeController
                 $this->academic->deleteAcademic($academic_id);
 
                 header("Location: index.php");
-                $result = $this->academic->getAllAcademics();
+                $resultAcademic = $this->academic->getAllAcademics();
                 require_once "../views/index.php";
                 break;
             
@@ -60,6 +55,15 @@ class AcademicController extends HomeController
                 break;
             }
         }
+    }
+
+    public function getAllAcademics() {        
+        $academic = new Academic();
+        $results = $academic->getAllAcademics();
+
+        require_once "../views/header.php";
+        require_once "../views/academics_show.php";
+        require_once "../views/footer.php";
     }
 
     public function addAcademic() {
@@ -92,15 +96,6 @@ class AcademicController extends HomeController
         }
 
         header("Location: index.php");
-    }
-
-    public function getAllAcademics() {
-        $result = new Academic();
-        $result->getAllAcademics();
-        
-        require_once "../views/header.php";
-        require_once "../views/index.php";
-        require_once "../views/footer.php";
     }
 }
 ?>

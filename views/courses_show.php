@@ -4,6 +4,7 @@
                 <tr>
                     <th><strong>Name</strong></th>
                     <th><strong>Credit</strong></th>
+                    <th><strong>Academic</strong></th>
                 </tr>
             </thead>
             <tbody>
