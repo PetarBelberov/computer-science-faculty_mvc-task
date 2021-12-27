@@ -63,8 +63,8 @@ class AcademicController extends HomeController
     }
 
     public function addAcademic() {
-        $name = $_POST['nameAcademic'];
-        $rank = $_POST['rankAcademic'];
+        $name = trim(htmlspecialchars($_POST['nameAcademic'], ENT_QUOTES));
+        $rank = trim(htmlspecialchars($_POST['rankAcademic'], ENT_QUOTES));
         
         // Validation
         if (!empty($name && $rank)) {
@@ -82,21 +82,22 @@ class AcademicController extends HomeController
     }
 
     public function editAcademic() {
-        $academic_id = $_GET["id"];
-        $name = $_POST['nameAcademic'];
-        $rank = $_POST['rankAcademic'];
+        $academic_id = trim(htmlspecialchars($_GET["id"], ENT_QUOTES));
+        $name = trim(htmlspecialchars($_POST['nameAcademic'], ENT_QUOTES));
+        $rank = trim(htmlspecialchars($_POST['rankAcademic'], ENT_QUOTES));
         
         // Validation
         if (!empty($name && $rank)) {
             $this->academic->editAcademic($name, $rank, $academic_id);
         }
-        
+
         header("Location: index.php");
     }
 
     public function getAllAcademics() {
         $resultAcademic = new Academic();
         $resultAcademic->getAllAcademics();
+        
         require_once "../views/header.php";
         require_once "../views/index.php";
         require_once "../views/footer.php";

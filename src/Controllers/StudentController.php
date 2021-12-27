@@ -58,8 +58,8 @@ class StudentController extends HomeController
     }
 
     public function addStudent() {
-        $name = $_POST['name'];
-        $course = $_POST['course'];
+        $name = trim(htmlspecialchars($_POST['name'], ENT_QUOTES));
+        $course = trim(htmlspecialchars($_POST['course'], ENT_QUOTES));
 
         // Validation
         if (!empty($name && $course)) {
@@ -76,9 +76,9 @@ class StudentController extends HomeController
     }
     
     public function editStudent() {
-        $student_id = $_GET["id"];
-        $name = $_POST['name'];
-        $course = $_POST['course'];
+        $student_id = trim(htmlspecialchars($_GET["id"], ENT_QUOTES));
+        $name = trim(htmlspecialchars($_POST['name'], ENT_QUOTES));
+        $course = trim(htmlspecialchars($_POST['course'], ENT_QUOTES));
 
         // Validation
         if (!empty($name && $course)) {
@@ -91,6 +91,7 @@ class StudentController extends HomeController
     public function getAllStudents() {
         $student = new Student();
         $student->getAllStudents();
+        
         require_once "../views/header.php";
         require_once "../views/index.php";
         require_once "../views/footer.php";
