@@ -62,4 +62,24 @@ class Academic {
         $resultAcademic = $this->db_handle->runBaseQuery($sql);
         return $resultAcademic;
     }
+
+    function checkAcademicName($academicName) {
+        $query = "SELECT name FROM academic WHERE name = ?";
+        $paramType = "i";
+        $paramValue = array(
+            $academicName
+        );
+        $resultAcademic = $this->db_handle->runQuery($query, $paramType, $paramValue);
+        return $resultAcademic;
+    }
+
+    function getAcademicIdByName($academic_name) {
+        $sql = "SELECT id, name FROM academic WHERE name = ?";
+        $paramType = "i";
+        $paramValue = array(
+            $academic_name
+        );
+        $result = $this->db_handle->runQuery($sql, $paramType, $paramValue);
+        return $result;
+    }
 }
