@@ -91,7 +91,7 @@ class CourseController extends HomeController
         // Validation
         if (!empty($name) && !empty($credit) && !empty($academicCheck)) {
             $insertId = $this->course->addCourse($name, $credit);
-            $this->course->addCourseAcademic($academic_id, $insertId);
+            $this->academic_course->addCourseAcademic($academic_id, $insertId);
         }
         if (empty($insertId)) {
             $response = array(
@@ -109,7 +109,7 @@ class CourseController extends HomeController
         $credit = trim(htmlspecialchars($_POST['creditCourse'], ENT_QUOTES));
   
         $current_academic_name = "";
-        $course_academics = $this->course->getAllCoursesAcademics();
+        $course_academics = $this->academic_course->getAllCoursesAcademics();
         foreach ($course_academics as $course_academic) {
             if ($course_academic['name']) {
                 $current_academic_name = $course_academic['name'];
@@ -128,7 +128,7 @@ class CourseController extends HomeController
         // Validation
         if (!empty($name) && !empty($credit)  && !empty($academic_name)) {
             $this->course->editCourse($name, $credit, $course_id);
-            $this->course->editCourseAcademic($academic_id, $current_academic_name, $course_id);
+            $this->academic_course->editCourseAcademic($academic_id, $current_academic_name, $course_id);
         }
         
         header("Location: index.php");
