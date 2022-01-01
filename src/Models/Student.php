@@ -54,6 +54,17 @@ class Student {
         return $result;
     }
 
+    function getStudentNameById($student_id) {
+        $query = "SELECT name FROM student WHERE id = ?";
+        $paramType = "i";
+        $paramValue = array(
+            $student_id
+        );
+        
+        $result = $this->db_handle->runQuery($query, $paramType, $paramValue);
+        return $result;
+    }
+
     function getAllStudents() {
         $sql = "SELECT * FROM student ORDER BY id";
 

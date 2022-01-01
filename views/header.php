@@ -1,7 +1,7 @@
 
 <html>
     <head>Computer Science Faculty</title>
-        <link href="<?php echo 'css/style.css' ?>" type="text/css" rel="stylesheet" />
+        <link href="<?php echo BASE_URL . '/css/style.css' ?>" type="text/css" rel="stylesheet" />
     </head>
     <body>
         <div class="header">

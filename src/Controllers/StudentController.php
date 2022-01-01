@@ -14,6 +14,7 @@ class StudentController extends HomeController
         if (! empty($_GET["action"])) {
             $action = $_GET["action"];
         }
+        
         $this->getAllStudents();
 
         if (isset($action)) {
