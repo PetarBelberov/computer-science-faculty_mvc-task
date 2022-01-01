@@ -20,20 +20,7 @@ class StudentCourse {
         return $result;
     }
 
-    function addCourseAcademic($academic_id, $insertId) {
-        $query = "INSERT INTO academic_course (academic_id, course_id) VALUES (?, ?)";
-        $paramType = "ss";
-        $paramValue = array(
-            $academic_id,
-            $insertId
-        );
-        
-        $result = $this->db_handle->insert($query, $paramType, $paramValue);
-        return $result;
-    }
-
-    // TODO
-    function getCoursesByStudentId($student_id) {
+    function getCoursesNamesByStudentId($student_id) {
         $query = "SELECT name FROM course
             JOIN student_course ON course.id = student_course.course_id
             WHERE student_course.student_id = ?";
@@ -44,6 +31,44 @@ class StudentCourse {
         
         $result = $this->db_handle->runQuery($query, $paramType, $paramValue);
         return $result;
-
     }
+
+    function getCoursesIdByStudentId($student_id) {
+        $query = "SELECT course.id FROM course
+            JOIN student_course ON course.id = student_course.course_id
+            WHERE student_course.student_id = ?";
+        $paramType = "s";
+        $paramValue = array(
+            $student_id
+        );
+        
+        $result = $this->db_handle->runQuery($query, $paramType, $paramValue);
+        return $result;
+    }
+
+    function getCourseIdByName($courseName) {
+        $query = "SELECT id FROM course
+            WHERE name = ?";
+        $paramType = "s";
+        $paramValue = array(
+            $courseName
+        );
+        
+        $result = $this->db_handle->runQuery($query, $paramType, $paramValue);
+        return $result;
+    }
+
+
+    function addStudentCourse($studentId, $courseId) {
+        $query = "INSERT INTO student_course (student_id, course_id) VALUES (?, ?)";
+        $paramType = "ss";
+        $paramValue = array(
+            $studentId,
+            $courseId
+        );
+        
+        $result = $this->db_handle->insert($query, $paramType, $paramValue);
+        return $result;
+    }
+    
 }

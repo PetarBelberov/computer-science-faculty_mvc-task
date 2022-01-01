@@ -6,23 +6,28 @@
             </tr>
         </thead>
     </table>
-    <form action="">
-        <?php  var_dump($allCourses); ?>
-        <?php  foreach ($allCourses as $course) : ?>
-            <?php if (in_array($course, $studentCourses)) : ?>
-                <input type="checkbox" name="courseName[]" checked value="<?php echo $course ?>">
-                <label for="courseName"> <?php echo $course ?></label><br>
-            <?php else : ?>
-                <input type="checkbox" name="courseName[]" value="<?php echo $course ?>">
-                <label for="courseName"> <?php echo $course ?></label><br>
-            <?php endif; ?>
-        <?php endforeach; ?> 
-    </form>
-    <div class="add-button">
-          <!-- <input type="submit" value="Submit"> -->
+    <form action="" method="post">
 
-        <a id="btn_add_action" href="?id=<?php echo $result[0]['id']?>"><img src="image/icon-add.png" />Submit</a>
-    </div>
+        <!-- Rest of the Courses -->
+        <select name="courseName" id="course_name">
+        <?php $rest = array_diff($allCourses, $studentCourses); ?>
+            <option value="" selected>Select...</option>
+        <?php  foreach ($rest as $course) : ?> 
+            <option value="<?php echo $course ?>"><?php echo $course ?></option>
+        <?php endforeach; ?> 
+        </select>
+
+        <!-- Currently Enrolled Courses -->
+        <ol>
+        <?php  foreach ($studentCourses as $studentCourse) : ?>
+            <li><?php echo $studentCourse ?></li>   
+            <?php endforeach; ?>
+        </ol>
+
+        <div class="add-button">
+            <input type="submit" name="addStudentCourse" class="btn-submit" value="Submit" />
+        </div>
+    </form>
 </div>
 
    

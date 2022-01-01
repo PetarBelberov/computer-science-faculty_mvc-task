@@ -10,7 +10,9 @@
             if (!empty($result)) :
                 foreach ($result as $k => $v) : ?>
                     <tr>
-                        <td><?php echo $result[$k]["name"]; ?></td>
+                        <td>
+                            <a href="<?php echo BASE_URL . '/index.php/student-courses?id=' . $result[$k]['id'] ?>"><?php echo $result[$k]["name"]; ?></a>
+                        </td>
                         <td>
                             <a class="btnEditAction" href="index.php?action=student-edit&id=<?php echo $result[$k]["id"]; ?>">
                                 <img src="image/icon-edit.png" />
