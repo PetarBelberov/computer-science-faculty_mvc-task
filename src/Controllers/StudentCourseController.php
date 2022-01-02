@@ -3,6 +3,7 @@
 namespace Sap\ComputerScienceFacultyMvcTask\Controllers;
 
 use Sap\ComputerScienceFacultyMvcTask\Models\StudentCourse;
+use TypeError;
 
 ob_start();
 class StudentCourseController extends HomeController {
@@ -30,10 +31,16 @@ class StudentCourseController extends HomeController {
         $allCourses = array_merge_recursive(...$this->course->getAllCourses())['name'];
         $studentName = array_merge_recursive(...$this->student->getStudentNameById($this->studentId))['name'];
 
-        $studentCourses= array_merge_recursive(...$this->student_course->getCoursesNamesByStudentId($this->studentId))['name'];
-        if (!is_array($studentCourses)) {
-            $studentCourses= array_merge_recursive(...$this->student_course->getCoursesNamesByStudentId($this->studentId));
+        // TO DO Validation for Student Without Courses
+        try {
+            $studentCourses= array_merge_recursive(...$this->student_course->getCoursesNamesByStudentId($this->studentId))['name'];
+            if (!is_array($studentCourses)) {
+                $studentCourses= array_merge_recursive(...$this->student_course->getCoursesNamesByStudentId($this->studentId));
+            }
+        }catch(TypeError $e){
+            $studentCourses =  "";
         }
+        
         
         require_once "../views/header.php";
         require_once "../views/student_courses.php";
