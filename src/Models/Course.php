@@ -56,6 +56,17 @@ class Course {
         return $result;
     }
 
+    function getCourseIdByName($courseName) {
+        $query = "SELECT id FROM course WHERE name = ?";
+        $paramType = "i";
+        $paramValue = array(
+            $courseName
+        );
+        
+        $result = $this->db_handle->runQuery($query, $paramType, $paramValue);
+        return $result;
+    }
+
     function getAllCourses() {
         $sql = "SELECT * FROM course ORDER BY id";
 

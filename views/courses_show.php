@@ -21,10 +21,10 @@
                             </td>
                             <td>
                                 <a class="btnEditAction" href="index.php?action=course-edit&id=<?php echo $result_courses[$k]["id"]; ?>">
-                                    <img src="image/icon-edit.png" />
+                                    <img src="<?php echo BASE_URL . '/image/icon-edit.png' ?>" />
                                 </a>
                                 <a class="btnDeleteAction" href="index.php?action=course-delete&id=<?php echo $result_courses[$k]["id"]; ?>">
-                                    <img src="image/icon-delete.png" />
+                                    <img src="<?php echo BASE_URL . '/image/icon-delete.png' ?>" />
                                 </a>
                             </td>
                         </tr>
@@ -33,6 +33,6 @@
             <tbody>
         </table>
         <div class="add-button">
-            <a id="btn_add_action" href="index.php?action=course-add"><img src="image/icon-add.png" />Add Course</a>
+            <a id="btn_add_action" href="index.php?action=course-add"><img src="<?php echo BASE_URL . '/image/icon-add.png' ?>" />Add Course</a>
         </div>
     </div>

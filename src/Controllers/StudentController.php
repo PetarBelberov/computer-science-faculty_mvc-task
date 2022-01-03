@@ -64,7 +64,6 @@ class StudentController extends HomeController
 
     public function addStudent() {
         $name = trim(htmlspecialchars($_POST['name'], ENT_QUOTES));
-        // $course = trim(htmlspecialchars($_POST['course'], ENT_QUOTES));
 
         // Validation
         if (!empty($name)) {
@@ -83,7 +82,6 @@ class StudentController extends HomeController
     public function editStudent() {
         $student_id = trim(htmlspecialchars($_GET["id"], ENT_QUOTES));
         $name = trim(htmlspecialchars($_POST['name'], ENT_QUOTES));
-        // $course = trim(htmlspecialchars($_POST['course'], ENT_QUOTES));
 
         // Validation
         if (!empty($name)) {
