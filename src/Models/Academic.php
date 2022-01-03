@@ -74,7 +74,7 @@ class Academic {
     }
 
     function getAcademicIdByName($academic_name) {
-        $sql = "SELECT id FROM academic WHERE name = ?";
+        $sql = "SELECT academic.id FROM academic WHERE academic.name = ?";
         $paramType = "s";
         $paramValue = array(
             $academic_name

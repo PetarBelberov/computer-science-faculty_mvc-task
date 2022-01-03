@@ -72,35 +72,16 @@ class CourseController extends HomeController
         $academicName = trim(htmlspecialchars($_POST['academicCourse'], ENT_QUOTES));
         $academicCheck = "";
 
-        $academics = $this->academic->checkAcademicName($academicName);
-        
-        $academics = $this->academic->getAcademicIdByName('');
-        $academic_id = "";
-        foreach ($academics as $academic) {
-            if ($academic['name'] == $academicName) {
-                $academic_id = $academic['id'];
-            }
-        }
-
-        foreach ($academics as $academic ) {
-            if (in_array($academicName, $academic)) {
-                $academicCheck = $academic;
-            }
-        }
+        $academicCheck = array_merge_recursive(...$this->academic->checkAcademicName($academicName))['name'];
+        $academicId = array_merge_recursive(...$this->academic->getAcademicIdByName($academicName))['id'];
 
         // Validation
         if (!empty($name) && !empty($credit) && !empty($academicCheck)) {
             $insertId = $this->course->addCourse($name, $credit);
-            $this->academic_course->addCourseAcademic($academic_id, $insertId);
+            $this->academic_course->addCourseAcademic($academicId, $insertId);
         }
-        if (empty($insertId)) {
-            $response = array(
-                "message" => "Problem in Adding New Record",
-                "type" => "error"
-            );
-        } else {
-            header("Location: index.php");
-        }
+
+        header('Location: ' . BASE_URL);
     }
     
     public function editCourse() {

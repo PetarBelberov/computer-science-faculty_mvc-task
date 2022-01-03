@@ -16,10 +16,10 @@
                             <td><?php echo $courseAcademics[$k]["name"]; ?></td>
                            
                             <td>
-                                <a class="btnEditAction" href="<?php echo BASE_URL . "/index.php?action=course-edit&id=" . $result_courses[$k]["id"]; ?>">
+                                <a class="btnEditAction" href="<?php echo BASE_URL . "/index.php?action=course-edit&id=" . $courseAcademics[$k]["id"]; ?>">
                                     <img src="<?php echo BASE_URL . '/image/icon-edit.png' ?>" />
                                 </a>
-                                <a class="btnDeleteAction" href="<?php echo BASE_URL . "/index.php?action=course-delete&id=" . $result_courses[$k]["id"]; ?>">
+                                <a class="btnDeleteAction" href="<?php echo BASE_URL . "/index.php?action=course-delete&id=" . $courseAcademics[$k]["id"]; ?>">
                                     <img src="<?php echo BASE_URL . '/image/icon-delete.png' ?>" />
                                 </a>
                             </td>
