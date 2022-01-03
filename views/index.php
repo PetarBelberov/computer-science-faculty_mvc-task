@@ -17,7 +17,7 @@
                             <a class="btnEditAction" href="<?php echo BASE_URL . '/index.php?action=student-edit&id=' . $result[$k]["id"]; ?>">
                                 <img src="<?php echo BASE_URL . '/image/icon-edit.png' ?>" />
                             </a>
-                            <a class="btnDeleteAction" href="index.php?action=student-delete&id=<?php echo $result[$k]["id"]; ?>">
+                            <a class="btnDeleteAction" href="<?php echo BASE_URL . "/index.php?action=student-delete&id=" . $result[$k]["id"]; ?>">
                                 <img src="<?php echo BASE_URL . '/image/icon-delete.png' ?>" />
                             </a>
                         </td>

@@ -18,5 +18,4 @@ abstract class HomeController
     }
 
     abstract function index();
-
 }

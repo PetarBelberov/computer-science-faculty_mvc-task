@@ -74,10 +74,20 @@ class Academic {
     }
 
     function getAcademicIdByName($academic_name) {
-        $sql = "SELECT id, name FROM academic WHERE name = ?";
-        $paramType = "i";
+        $sql = "SELECT id FROM academic WHERE name = ?";
+        $paramType = "s";
         $paramValue = array(
             $academic_name
+        );
+        $result = $this->db_handle->runQuery($sql, $paramType, $paramValue);
+        return $result;
+    }
+
+    function getAcademicIdByCourseId($courseId) {
+        $sql = "SELECT academic_course.academic_id FROM academic_course WHERE academic_course.course_id = ?";
+        $paramType = "i";
+        $paramValue = array(
+            $courseId
         );
         $result = $this->db_handle->runQuery($sql, $paramType, $paramValue);
         return $result;

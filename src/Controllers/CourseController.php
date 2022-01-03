@@ -34,7 +34,7 @@ class CourseController extends HomeController
                     if (isset($_POST['addCourse'])) {
                         $this->editCourse();
                     }
-                  
+                    
                     $result_academics = $this->academic->getAllAcademics();
                     $result = $this->course->getCourseById($course_id);
 
@@ -59,7 +59,7 @@ class CourseController extends HomeController
     public function getAllCourses() {
         $course = new Course();
         $result_courses = $course->getAllCourses();
-        $result_academics = $course->getAllCoursesAcademics();
+        $courseAcademics = $this->academic_course->getAllCoursesAcademics();
 
         require_once "../views/header.php";
         require_once "../views/courses_show.php";
@@ -104,34 +104,22 @@ class CourseController extends HomeController
     }
     
     public function editCourse() {
-        $course_id = trim(htmlspecialchars($_GET["id"], ENT_QUOTES));
+        $courseId = trim(htmlspecialchars($_GET["id"], ENT_QUOTES));
+        $courseId = (int) $courseId;
         $name = trim(htmlspecialchars($_POST['nameCourse'], ENT_QUOTES));
         $credit = trim(htmlspecialchars($_POST['creditCourse'], ENT_QUOTES));
-  
-        $current_academic_name = "";
-        $course_academics = $this->academic_course->getAllCoursesAcademics();
-        foreach ($course_academics as $course_academic) {
-            if ($course_academic['name']) {
-                $current_academic_name = $course_academic['name'];
-            }
-        }
-
+        
+        $currentAcademicId = array_merge_recursive(...$this->academic->getAcademicIdByCourseId($courseId))['academic_id'];
         $academic_name = trim(htmlspecialchars($_POST['academicCourse'], ENT_QUOTES));
-        $academics = $this->academic->getAcademicIdByName('');
-        $academic_id = "";
-        foreach ($academics as $academic) {
-            if ($academic['name'] == $academic_name) {
-                $academic_id = $academic['id'];
-            }
-        }
-
+        $academicId = array_merge_recursive(...$this->academic->getAcademicIdByName($academic_name))['id'];
+        
         // Validation
         if (!empty($name) && !empty($credit)  && !empty($academic_name)) {
-            $this->course->editCourse($name, $credit, $course_id);
-            $this->academic_course->editCourseAcademic($academic_id, $current_academic_name, $course_id);
+            $this->course->editCourse($name, $credit, $courseId);
+            $insertCourseAcademic = $this->academic_course->editCourseAcademic($academicId, $currentAcademicId, $courseId);
         }
-        
-        header("Location: index.php");
+
+        header('Location: ' . BASE_URL);
     }
 }
 ?>

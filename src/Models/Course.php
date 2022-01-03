@@ -95,15 +95,14 @@ class Course {
         return $result;
     }
 
-    function editCourseAcademic($academic_id, $current_academic_name, $course_id ) {
+    function editCourseAcademic($academic_id, $currentAcademicId, $course_id ) {
         $query = "UPDATE academic_course 
-            JOIN academic ON academic.id = academic_course.academic_id
             SET academic_id= ?
-            WHERE academic.name = ? AND academic_course.course_id = ?";
+            WHERE academic_id = ? AND course_id = ?";
         $paramType = "sss";
         $paramValue = array(
             $academic_id,
-            $current_academic_name ,
+            $currentAcademicId ,
             $course_id
         );
         var_dump($academic_id);

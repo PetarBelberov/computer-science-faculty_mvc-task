@@ -8,22 +8,18 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                if (!empty($result_courses)) :
-                    foreach ($result_courses as $k => $v) : ?>
+                <?php if (!empty($courseAcademics)) :
+                    foreach ($courseAcademics as $k => $v) : ?>
                         <tr>
-                            <td><?php echo $result_courses[$k]["name"]; ?></td>
-                            <td><?php echo $result_courses[$k]["credit"]; ?></td>
+                            <td><?php echo $courseAcademics[$k]["course_name"]; ?></td>
+                            <td><?php echo $courseAcademics[$k]["credit"]; ?></td>
+                            <td><?php echo $courseAcademics[$k]["name"]; ?></td>
+                           
                             <td>
-                                <?php if(isset($result_academics[$k]["name"])) : ?>
-                                    <?php echo $result_academics[$k]["name"]; ?>
-                                <?php endif; ?>
-                            </td>
-                            <td>
-                                <a class="btnEditAction" href="index.php?action=course-edit&id=<?php echo $result_courses[$k]["id"]; ?>">
+                                <a class="btnEditAction" href="<?php echo BASE_URL . "/index.php?action=course-edit&id=" . $result_courses[$k]["id"]; ?>">
                                     <img src="<?php echo BASE_URL . '/image/icon-edit.png' ?>" />
                                 </a>
-                                <a class="btnDeleteAction" href="index.php?action=course-delete&id=<?php echo $result_courses[$k]["id"]; ?>">
+                                <a class="btnDeleteAction" href="<?php echo BASE_URL . "/index.php?action=course-delete&id=" . $result_courses[$k]["id"]; ?>">
                                     <img src="<?php echo BASE_URL . '/image/icon-delete.png' ?>" />
                                 </a>
                             </td>

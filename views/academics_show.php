@@ -14,10 +14,10 @@
                             <td><?php echo $results[$k]["name"]; ?></td>
                             <td><?php echo $results[$k]["rank"]; ?></td>
                             <td>
-                                <a class="btnEditAction" href="index.php?action=academic-edit&id=<?php echo $results[$k]["id"]; ?>">
+                                <a class="btnEditAction" href=<?php echo BASE_URL . "/index.php?action=academic-edit&id=" . $results[$k]["id"]; ?>>
                                     <img src="<?php echo BASE_URL . '/image/icon-edit.png' ?>" />
                                 </a>
-                                <a class="btnDeleteAction" href="index.php?action=academic-delete&id=<?php echo $results[$k]["id"]; ?>">
+                                <a class="btnDeleteAction" href="<?php echo BASE_URL . "/index.php?action=academic-delete&id=" . $results[$k]["id"]; ?>">
                                     <img src="<?php echo BASE_URL . '/image/icon-delete.png' ?>" />
                                 </a>
                             </td>

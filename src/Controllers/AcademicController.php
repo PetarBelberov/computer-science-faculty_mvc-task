@@ -44,8 +44,8 @@ class AcademicController extends HomeController
             
             case "academic-delete":
                 $academic_id = $_GET["id"];                    
-                $this->academic->deleteAcademic($academic_id);
-
+                $a = $this->academic->deleteAcademic($academic_id);
+                var_dump($a);
                 header("Location: index.php");
                 $resultAcademic = $this->academic->getAllAcademics();
                 require_once "../views/index.php";

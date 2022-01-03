@@ -52,7 +52,7 @@
                         <td>
                             <input type="hidden" name="courseId" id="course_id" value="<?php echo $studentCourses['id'][$i]; ?>" />
                             <div class="delete-button">
-                                <input type="submit" name="deleteStudentCourse" class="btn-submit" value="Submit" />
+                                <button type="submit"  name="deleteStudentCourse"><img src="<?php echo BASE_URL . '/image/icon-delete.png' ?>" /></button>
                             </div>
                         </td>
                     </tr>
