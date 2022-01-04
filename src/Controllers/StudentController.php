@@ -16,7 +16,6 @@ class StudentController extends HomeController
         }
         
         $this->getAllStudents();
-
         if (isset($action)) {
             switch ($action) {
                 

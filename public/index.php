@@ -27,36 +27,61 @@ if (isset($_GET["id"])) {
     }
 }
 
-$student = new StudentController();
-$student->index();
-
-$academic = new AcademicController();
-$academic->index();
-
-$course = new CourseController();
-$course->index();
-
 $query = new QueryController();
-$query->index();
-// else {
-    // if ($_SERVER['REQUEST_URI'] == '/index.php/students') {
-    //     $student = new StudentController();
-    //     $student->index();
-    // }
-    // if ($_SERVER['REQUEST_URI'] == '/index.php/academics') {
-    //     $academic = new AcademicController();
-    //     $academic->index();
-    // }
-    // if ($_SERVER['REQUEST_URI'] == '/index.php/courses') {
-    //     $course = new CourseController();
-    //     $course->index();
-    // }
-    // if ($_SERVER['REQUEST_URI'] == '/index.php/queries') {
-    //     $query = new QueryController();
-    //     $query->index();
-    // }
-   
+if ($_SERVER['REQUEST_URI'] == '/index.php/queries/students-academics') {
+    
+    $query->index();
+}
+if ($_SERVER['REQUEST_URI'] == '/index.php/queries/students-credits') {
+    
+    $query->studentsCredits();
+}
+if ($_SERVER['REQUEST_URI'] == '/index.php/queries/academics-courses-students') {
+    
+    $query->academicsCoursesStudents();
+}
+if ($_SERVER['REQUEST_URI'] == '/index.php/queries/first-3-students-courses') {
+    
+    $query->firstThreeStudentsCourses();
+}
+if ($_SERVER['REQUEST_URI'] == '/index.php/queries/first-3-academics-students') {
+    
+    $query->firstThreeAcademicsStudents();
+}
+
+
+else {
+    $student = new StudentController();
+    $student->index();
+    
+    $academic = new AcademicController();
+    $academic->index();
+    
+    $course = new CourseController();
+    $course->index();
+}
+
+
+
+// $query = new QueryController();
+// $query->index();
+
+
+// if ($_SERVER['REQUEST_URI'] == '/index.php/students') {
+//     $student = new StudentController();
+//     $student->index();
 // }
+// if ($_SERVER['REQUEST_URI'] == '/index.php/academics') {
+//     $academic = new AcademicController();
+//     $academic->index();
+// }
+// if ($_SERVER['REQUEST_URI'] == '/index.php/courses') {
+//     $course = new CourseController();
+//     $course->index();
+// }
+
+   
+
 
 
    
