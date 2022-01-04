@@ -2,6 +2,7 @@
 
 use Sap\ComputerScienceFacultyMvcTask\Controllers\AcademicController;
 use Sap\ComputerScienceFacultyMvcTask\Controllers\CourseController;
+use Sap\ComputerScienceFacultyMvcTask\Controllers\QueryController;
 use Sap\ComputerScienceFacultyMvcTask\Controllers\StudentController;
 use Sap\ComputerScienceFacultyMvcTask\Controllers\StudentCourseController;
 
@@ -25,15 +26,36 @@ if (isset($_GET["id"])) {
         $student->index();
     }
 }
+
+$student = new StudentController();
+$student->index();
+
+$academic = new AcademicController();
+$academic->index();
+
+$course = new CourseController();
+$course->index();
+
+$query = new QueryController();
+$query->index();
 // else {
-    $student = new StudentController();
-    $student->index();
-
-    $academic = new AcademicController();
-    $academic->index();
-
-    $course = new CourseController();
-    $course->index();
+    // if ($_SERVER['REQUEST_URI'] == '/index.php/students') {
+    //     $student = new StudentController();
+    //     $student->index();
+    // }
+    // if ($_SERVER['REQUEST_URI'] == '/index.php/academics') {
+    //     $academic = new AcademicController();
+    //     $academic->index();
+    // }
+    // if ($_SERVER['REQUEST_URI'] == '/index.php/courses') {
+    //     $course = new CourseController();
+    //     $course->index();
+    // }
+    // if ($_SERVER['REQUEST_URI'] == '/index.php/queries') {
+    //     $query = new QueryController();
+    //     $query->index();
+    // }
+   
 // }
 
 

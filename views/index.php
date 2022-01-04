@@ -27,7 +27,7 @@
         <tbody>
     </table>
     <div class="add-button">
-        <a id="btn_add_action" href="index.php?action=student-add"><img src="<?php echo BASE_URL . '/image/icon-add.png' ?>" />Add Student</a>
+        <a id="btn_add_action" href="<?php echo BASE_URL . '/index.php/students?action=student-add' ?>"><img src="<?php echo BASE_URL . '/image/icon-add.png' ?>" />Add Student</a>
     </div>
 </div>
 
