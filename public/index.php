@@ -27,7 +27,6 @@ if (isset($_GET["id"])) {
     }
 }
 
-
 elseif ($_SERVER['REQUEST_URI'] == '/index.php/queries') {
     $query = new QueryController();
     $query->index();
@@ -52,7 +51,7 @@ elseif  ($_SERVER['REQUEST_URI'] == '/index.php/queries/first-3-academics-studen
     $query = new QueryController();
     $query->firstThreeAcademicsStudents();
 }
-// var_dump($_GET["action"]);
+
 if ($_SERVER['REQUEST_URI'] == '/index.php' || isset($_GET["action"])) {
     $student = new StudentController();
     $student->index();
@@ -63,24 +62,6 @@ if ($_SERVER['REQUEST_URI'] == '/index.php' || isset($_GET["action"])) {
     $course = new CourseController();
     $course->index();
 }
-
-
-// $query = new QueryController();
-// $query->index();
-
-
-// if ($_SERVER['REQUEST_URI'] == '/index.php/students') {
-//     $student = new StudentController();
-//     $student->index();
-// }
-// if ($_SERVER['REQUEST_URI'] == '/index.php/academics') {
-//     $academic = new AcademicController();
-//     $academic->index();
-// }
-// if ($_SERVER['REQUEST_URI'] == '/index.php/courses') {
-//     $course = new CourseController();
-//     $course->index();
-// }
 
    
 
