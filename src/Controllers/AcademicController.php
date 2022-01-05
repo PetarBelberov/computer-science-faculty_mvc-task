@@ -14,6 +14,7 @@ class AcademicController extends HomeController
         if (! empty($_GET["action"])) {
             $action = $_GET["action"];
         }
+        
         $options = array();
         array_push( $options, 'Assistant Professor');
         array_push( $options, 'Senior Assistant Professor');
@@ -24,7 +25,8 @@ class AcademicController extends HomeController
 
         if (isset($action)) {
             switch ($action) {
-                case "academic-add":
+            case "academic-add":
+
                 if (isset($_POST['addAcademic'])) {
                     $this->addAcademic();
                 }
@@ -75,14 +77,7 @@ class AcademicController extends HomeController
             $insertId = $this->academic->addAcademic($name, $rank);
         }
         
-        if (empty($insertId)) {
-            $response = array(
-                "message" => "Problem in Adding New Record",
-                "type" => "error"
-            );
-        } else {
-            header("Location: index.php");
-        }
+        header('Location: ' . BASE_URL . '/index.php');
     }
 
     public function editAcademic() {
@@ -95,7 +90,7 @@ class AcademicController extends HomeController
             $this->academic->editAcademic($name, $rank, $academic_id);
         }
 
-        header("Location: index.php");
+        header('Location: ' . BASE_URL . '/index.php');
     }
 }
 ?>

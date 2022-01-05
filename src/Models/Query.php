@@ -59,7 +59,7 @@ class Query
         return $result;
     }
 
-    // The first 3 course names with the most number of Students - academicsCoursesStudents
+    // The first 3 course names with the most number of Students - firstThreeStudentsCourses
     function getFirstThreeStudentsCourses() {
         $sql = "SELECT course.name as CourseName, COUNT(student.id) as NumberOfStudents FROM course
             LEFT JOIN student_course ON student_course.course_id=course.id
@@ -72,7 +72,7 @@ class Query
         return $result;
     }
 
-    // The first 3 course names with the most number of Students - academicsCoursesStudents
+    // The first 3 academic names with the most number of Students assigned into their Course - firstThreeAcademicsStudents
     function getFirstThreeAcademicsStudents() {
         $sql = "SELECT academic.name as AcademicName, COUNT(student.id) as NumberOfStudents FROM academic
             JOIN academic_course ON academic_course.academic_id=academic.id

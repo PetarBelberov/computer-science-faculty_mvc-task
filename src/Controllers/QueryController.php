@@ -9,6 +9,13 @@ class QueryController extends HomeController
     }
 
     public function index() {
+       
+        require_once "../views/header.php";
+        require_once "../views/queries/list_show.php";
+        require_once "../views/footer.php";
+    }
+
+    public function studentsAcademics() {
         $studentsCourses = $this->query->getStudentsCourses();
         $academicsCourses = $this->query->getAcademicsCourses();
 

@@ -12,6 +12,7 @@
     <div>
         <label>Academic</label> <span id="academic-info" class="academic"></span><br />
         <select name="academicCourse" id="academic_course" class="course-add">
+            <option value="" selected>Select...</option>
             <?php foreach ($result_academics as $academic) : ?>
                     <option value="<?php echo $academic['name']; ?>" ><?php echo $academic['name']; ?></option>
             <?php endforeach; ?>

@@ -63,14 +63,7 @@ class StudentCourseController extends HomeController {
                 $insert = $this->student_course->addStudentCourse($this->studentId, $courseId);
             }
 
-            if (empty($insert)) {
-                $response = array(
-                "message" => "Problem in Adding New Record",
-                "type" => "error"
-            );
-            } else {
-                header('Location: ' . BASE_URL . '/index.php/student-courses?action=show&id=' . $this->studentId);
-            }
+            header('Location: ' . BASE_URL . '/index.php/student-courses?action=show&id=' . $this->studentId);
         }
     }
 

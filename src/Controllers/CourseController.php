@@ -81,7 +81,7 @@ class CourseController extends HomeController
             $this->academic_course->addCourseAcademic($academicId, $insertId);
         }
 
-        header('Location: ' . BASE_URL);
+        header('Location: ' . BASE_URL . '/index.php');
     }
     
     public function editCourse() {
@@ -100,7 +100,7 @@ class CourseController extends HomeController
             $insertCourseAcademic = $this->academic_course->editCourseAcademic($academicId, $currentAcademicId, $courseId);
         }
 
-        header('Location: ' . BASE_URL);
+        header('Location: ' . BASE_URL . '/index.php');
     }
 }
 ?>

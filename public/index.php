@@ -27,40 +27,42 @@ if (isset($_GET["id"])) {
     }
 }
 
-$query = new QueryController();
-if ($_SERVER['REQUEST_URI'] == '/index.php/queries/students-academics') {
-    
+
+elseif ($_SERVER['REQUEST_URI'] == '/index.php/queries') {
+    $query = new QueryController();
     $query->index();
 }
-if ($_SERVER['REQUEST_URI'] == '/index.php/queries/students-credits') {
-    
+elseif  ($_SERVER['REQUEST_URI'] == '/index.php/queries/students-academics') {
+    $query = new QueryController();
+    $query->studentsAcademics();
+}
+elseif  ($_SERVER['REQUEST_URI'] == '/index.php/queries/students-credits') {
+    $query = new QueryController();
     $query->studentsCredits();
 }
-if ($_SERVER['REQUEST_URI'] == '/index.php/queries/academics-courses-students') {
-    
+elseif  ($_SERVER['REQUEST_URI'] == '/index.php/queries/academics-courses-students') {
+    $query = new QueryController();
     $query->academicsCoursesStudents();
 }
-if ($_SERVER['REQUEST_URI'] == '/index.php/queries/first-3-students-courses') {
-    
+elseif  ($_SERVER['REQUEST_URI'] == '/index.php/queries/first-3-students-courses') {
+    $query = new QueryController();
     $query->firstThreeStudentsCourses();
 }
-if ($_SERVER['REQUEST_URI'] == '/index.php/queries/first-3-academics-students') {
-    
+elseif  ($_SERVER['REQUEST_URI'] == '/index.php/queries/first-3-academics-students') {
+    $query = new QueryController();
     $query->firstThreeAcademicsStudents();
 }
-
-
-else {
+// var_dump($_GET["action"]);
+if ($_SERVER['REQUEST_URI'] == '/index.php' || isset($_GET["action"])) {
     $student = new StudentController();
     $student->index();
-    
+
     $academic = new AcademicController();
     $academic->index();
-    
+   
     $course = new CourseController();
     $course->index();
 }
-
 
 
 // $query = new QueryController();

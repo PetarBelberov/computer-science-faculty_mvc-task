@@ -14,8 +14,8 @@ class AcademicCourse {
 
     function getAllCoursesAcademics() {
         $sql = "SELECT course.id, course.name as course_name, course.credit, academic.name FROM course
-            JOIN academic_course ON academic_course.course_id = course.id
-            JOIN academic ON academic.id=academic_course.academic_id";
+            LEFT JOIN academic_course ON academic_course.course_id = course.id
+            LEFT JOIN academic ON academic.id=academic_course.academic_id";
 
         $result = $this->db_handle->runBaseQuery($sql);
         return $result;

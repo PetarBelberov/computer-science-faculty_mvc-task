@@ -10,6 +10,8 @@ use Sap\ComputerScienceFacultyMvcTask\Models\StudentCourse;
 
 abstract class HomeController
 {
+    private $uriSegments;
+    
     function __construct() {
         $this->student = new Student();
         $this->academic = new Academic();

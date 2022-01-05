@@ -20,5 +20,9 @@
     <div>
         <input type="submit" name="addCourse" class="btn-submit" value="Add" />
     </div>
-    </div>
 </form>
+<h2 class="title back">
+    <a href="<?php echo BASE_URL . '/index.php' ?>">
+        <i class="fas fa-home"></i> Back
+    </a>
+</h2>

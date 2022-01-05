@@ -68,14 +68,7 @@ class StudentController extends HomeController
         if (!empty($name)) {
             $insertId = $this->student->addStudent($name);
         }
-        if (empty($insertId)) {
-            $response = array(
-                "message" => "Problem in Adding New Record",
-                "type" => "error"
-            );
-        } else {
-            header("Location: index.php");
-        }
+        header('Location: ' . BASE_URL . '/index.php');
     }
     
     public function editStudent() {
@@ -87,7 +80,7 @@ class StudentController extends HomeController
             $this->student->editStudent($name, $student_id);
         }
         
-        header("Location: index.php");
+        header('Location: ' . BASE_URL . '/index.php');
     }
 }
 ?>

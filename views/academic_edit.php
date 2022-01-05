@@ -20,5 +20,9 @@
     <div>
         <input type="submit" name="addAcademic" class="btn-submit" value="Save" />
     </div>
-    </div>
 </form>
+<h2 class="title back">
+    <a href="<?php echo BASE_URL . '/index.php' ?>">
+        <i class="fas fa-home"></i> Back
+    </a>
+</h2>
