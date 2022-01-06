@@ -1,4 +1,4 @@
-## Computer Science Faculty MVC-based Web Application
+# Computer Science Faculty MVC-based Web Application
 That is a Computer Science Faculty MVC-based web application. The file structure is into three folder parts. ```public``` is the folder where it is the front controller - ```index.php``` also, there are assets and styles. In the **src** folder are the **Controllers** and **Models** classes. In the view" folder are all the templates. There is an autoloading composer functionality. Also, ```cs_faculty.php``` is the database file that needs to add to your MySQL database. Run the ```composer dump-autoload``` command in your command prompt to generate the necessary files that Composer will use for autoloading.
 
 ## Installation
